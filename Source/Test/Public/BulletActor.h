@@ -31,4 +31,11 @@ public:
 	// 속력 변수 speed 선언(기본값: 600)
 	UPROPERTY(VisibleAnywhere, Category = "Variables")
 	float speed = 600.0f;
+
+	UPROPERTY(EditAnywhere, Category = "Variables")
+	class UParticleSystem* explosionFX;
+
+private:
+	UFUNCTION()
+	void OnOverlap();
 };

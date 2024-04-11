@@ -4,6 +4,9 @@
 #include "BulletActor.h"
 #include "Components/BoxComponent.h"
 #include "Components/StaticMeshComponent.h"
+#include "MyPlayer.h"
+#include "EnemyActor.h"
+#include <../../../../../../../Source/Runtime/Engine/Classes/Kismet/GameplayStatics.h>
 
 
 ABulletActor::ABulletActor()
@@ -33,6 +36,8 @@ void ABulletActor::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	// Box 컴포넌트의 BeginOverlap 이벤트에 OnOverlap 함수를 바인딩한다.
+
 }
 
 void ABulletActor::Tick(float DeltaTime)
@@ -41,6 +46,19 @@ void ABulletActor::Tick(float DeltaTime)
 
 	// 자신의 위쪽 방향으로 speed 속력으로 이동하기
 	SetActorLocation(GetActorLocation() + GetActorUpVector() * speed * DeltaTime);
+
+}
+
+void ABulletActor::OnOverlap()
+{
+	// 만일, 충돌한 액터가 AEnemy 클래스라면...
+	
+		// 충돌한 액터의 위치에서 explosionFX 이펙트를 실행한다.
+		
+		// 충돌한 액터를 제거한다.
+	
+		// 자신도 제거한다.
+
 
 }
 
